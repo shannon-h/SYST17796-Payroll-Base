@@ -33,7 +33,7 @@ public class Employee
             numHours = givenHours;
         }
 	/**
-	 * A constructor tht takes in the Employee's name
+	 * A constructor that takes in the Employee's name
 	 * @param newName
 	 */
 	public Employee(String newName)

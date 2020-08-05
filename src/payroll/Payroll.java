@@ -46,6 +46,9 @@ public class Payroll
   */
 private void run()
 {
+  //creates a singleton factory for creating employees
+  EmployeeFactory employeeFactory = EmployeeFactory.getInstance();
+    
   Scanner sc= new Scanner(System.in);
   boolean shouldContinue= true;//to keep track of whether the user wants to continue
   System.out.println("Welcome to the Payroll Application.");
@@ -62,12 +65,14 @@ private void run()
     String manager = sc.nextLine();
     if(manager.equals("yes"))
     {
-        Manager man = new Manager(name, numHours, wage);
+        //creates a manager
+        Employee man = employeeFactory.createEmployee(EmployeeType.MANAGER_NO_BONUS, name, numHours, wage);
         employees[numEmployees]=man;
     }
     else
     {
-        Employee emp = new Employee(name, numHours,wage);//create a new Employee with the given info
+        //creates an employee
+        Employee emp = employeeFactory.createEmployee(EmployeeType.EMPLOYEE, name, numHours,wage);//create a new Employee with the given info
         employees[numEmployees]= emp;//add the new employee to the array
     }
     
